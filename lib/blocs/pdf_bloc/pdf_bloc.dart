@@ -25,7 +25,7 @@ class PdfBloc extends Bloc<PdfEvent, PdfState> {
       await tempFile.writeAsBytes(data.buffer.asUint8List(), flush: true);
       emit(state.copyWith(status: PdfStatus.success, pdfPath: tempFile.path));
     } catch (e) {
-      emit(state.copyWith(status: PdfStatus.error));
+      emit(state.copyWith(status: PdfStatus.error,message: e.toString()));
     }
   }
 }
